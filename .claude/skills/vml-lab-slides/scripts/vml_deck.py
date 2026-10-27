@@ -124,7 +124,7 @@ class Deck:
         self.prs = Presentation(template)
         # 元の資料の変更履歴（編集者の氏名とアカウント）、改訂情報、SharePoint の管理情報を外す
         for rId, rel in list(self.prs.part.rels.items()):
-            if any(k in rel.reltype for k in ("changesInfo", "revisionInfo", "/customXml")):
+            if any(k in rel.reltype for k in ("changesInfo", "revisionInfo", "/customXml", "printerSettings")):
                 self.prs.part.drop_rel(rId)
         self.prs.slide_width, self.prs.slide_height = W, H
         self._blank = self.prs.slide_layouts[6]  # 白紙
